@@ -12,6 +12,7 @@ must be able to walk around using wasd or arrows and have a random chance to enc
 must be able to buy food to heal
 alcholl will be cheap and good for heals but raise alcholic level
 defeating enemies will grant gold buying items will cost gold
+FIND A USE FOR INTELGENCE!
 
 possible if i have time:
 have perchasble weapons that affect dmg
