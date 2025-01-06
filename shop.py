@@ -24,7 +24,7 @@ class Shop:
             price = self.items[item]
             if self.gold >= price:
                 self.gold -= price
-                print(f"\nYou bought {item} for {price} gold!")
+                print(f"\nYou bought {item} for {price} gold, you have {self.gold} left")
             else:
                 print("\nYou don't have enough gold for that item.")
         else:
@@ -36,19 +36,20 @@ class Shop:
             self.show_balance()  # Show the player's balance
             self.show_items()    # Show available items
 
-            print("\nEnter the number of the item you want to buy (or 'q' to quit):")
+            print("\nEnter the name of the item you want to buy (or 'q' to quit):")
             choice = input("Your choice: ").strip().lower()
 
             if choice == 'q':
                 print("\nExiting the shop. Thank you for visiting!")
                 break
-
-            item_map = {
-                'beer': 'Beer',
-                'pork': 'Pork',
-                'chicken': 'Chicken',
-                'beef': 'Beef'
+            elif choice in ['beer', 'pork', 'chicken', 'beef']:
+                item_map = {
+                    'beer': 'Beer',
+                    'pork': 'Pork',
+                    'chicken': 'Chicken',
+                    'beef': 'Beef'
             }
+                self.gold == self.gold - Shop('self.items')
 
             if choice in item_map:
                 self.buy_item(item_map[choice])
