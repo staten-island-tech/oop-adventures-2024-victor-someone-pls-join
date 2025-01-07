@@ -37,22 +37,23 @@ class Shop:
             self.show_items()    # Show available items
 
             print("\nEnter the name of the item you want to buy (or 'q' to quit):")
-            choice = input("Your choice: ").strip().lower()
+            choice = input("Your choice: ").strip().lower()  # Normalize to lowercase
 
             if choice == 'q':
                 print("\nExiting the shop. Thank you for visiting!")
                 break
-            elif choice in ['beer', 'pork', 'chicken', 'beef']:
-                for i in self.items:
-                    self.gold - self.items
-
-                #find the choice in self.items
-                self.gold == self.gold - self.items[f'choice']
-
-            if choice in item_map:
-                self.buy_item(item_map[choice])
             else:
-                print("\nInvalid choice. Please try again.")
+                # Normalize the choice input to match item names (case insensitive)
+                matched_item = None
+                for item in self.items:
+                    if choice == item.lower():  # Match user input with lowercased item names
+                        matched_item = item
+                        break
+
+                if matched_item:
+                    self.buy_item(matched_item)  # Call buy_item with the correctly cased item name
+                else:
+                    print("\nInvalid choice. Please try again.")
 
 def main():
     # Create the shop instance
@@ -68,18 +69,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-# else:
-#                 # Normalize the choice input to match item names (case insensitive)
-#                 matched_item = None
-#                 for item in self.items:
-#                     if choice == item.lower():  # Match user input with lowercased item names
-#                         matched_item = item
-#                         break
-
-#                 if matched_item:
-#                     self.buy_item(matched_item)  # Call buy_item with the correctly cased item name
-#                 else:
-#                     print("\nInvalid choice. Please try again.")
