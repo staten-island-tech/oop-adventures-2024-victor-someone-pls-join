@@ -19,7 +19,7 @@ class Character:
             print(f"{stat.capitalize()}: {value}")
 
 # Warrior subclass
-class Warrior(Character):
+class barbarian(Character):
     def __init__(self, name):
         super().__init__(name)
         self.character_type = "warrior"
@@ -68,8 +68,8 @@ def create_character():
     char_type = input("Enter the character's type (warrior, mage, archer, thief): ").lower()
 
     # Create the character object based on the type
-    if char_type == "warrior":
-        character = Warrior(name)
+    if char_type == "barbarian":
+        character = barbarian(name)
     elif char_type == "mage":
         character = Mage(name)
     elif char_type == "archer":

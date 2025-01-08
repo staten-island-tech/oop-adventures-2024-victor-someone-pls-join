@@ -42,17 +42,18 @@ class Shop:
             if choice == 'q':
                 print("\nExiting the shop. Thank you for visiting!")
                 break
-            elif choice in ['beer', 'pork', 'chicken', 'beef']:
-                for i in self.items:
-                    self.gold - self.items
-
-                #find the choice in self.items
-                self.gold == self.gold - self.items[f'choice']
-
-            if choice in item_map:
-                self.buy_item(item_map[choice])
+            
             else:
-                print("\nInvalid choice. Please try again.")
+                matched_item = None
+                for item in self.items:
+                    if choice == item.lower(): 
+                        matched_item = item
+                        break
+
+                if matched_item:
+                    self.buy_item(matched_item)
+                else:
+                    print("\nInvalid choice. Please try again.")
 
 def main():
     # Create the shop instance
