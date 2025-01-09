@@ -1,7 +1,3 @@
-
-
-
-
 import random
 
 # Parent class
