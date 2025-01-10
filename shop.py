@@ -1,16 +1,34 @@
+class Player:
+    def __init__(self, name):
+        self.name = name
+        self.health = 0  # Starting health
+        self.gold = 50     # Starting gold
+
+    def heal(self, amount):
+        """Heals the player by a certain amount."""
+        self.health += amount
+        if self.health > 100:
+            self.health = 100  # Max health cap
+        print(f"\n{self.name} healed for {amount} points. Current health: {self.health}")
+
+    def show_status(self):
+        """Show the player's current health and gold."""
+        print(f"\n{self.name} - Health: {self.health}, Gold: {self.gold}")
+
 class Shop:
-    def __init__(self):
+    def __init__(self, player):
         self.items = {
-            "Beer": 10,       # Beer costs 10 gold
+            "Beer": 5,       # Beer costs 10 gold
             "Pork": 20,       # Pork costs 20 gold
             "Chicken": 15,    # Chicken costs 15 gold
-            "Beef": 25        # Beef costs 25 gold
+            "Beef": 25,        # Beef costs 25 gold
+            "turducken": 100  # turducken costs 100 gold
         }
-        self.gold = 50      # Starting gold
+        self.player = player  # Reference to the player instance
 
     def show_balance(self):
         """Show the player's current gold balance."""
-        print(f"\nYou have {self.gold} gold.\n")
+        print(f"\nYou have {self.player.gold} gold.\n")
 
     def show_items(self):
         """Show available items with their prices."""
@@ -22,9 +40,14 @@ class Shop:
         """Handle the purchase of an item."""
         if item in self.items:
             price = self.items[item]
-            if self.gold >= price:
-                self.gold -= price
-                print(f"\nYou bought {item} for {price} gold, you have {self.gold} left")
+            if self.player.gold >= price:
+                self.player.gold -= price
+                print(f"\nYou bought {item} for {price} gold, you have {self.player.gold} gold left.")
+
+                # If the item is food, heal the player
+                if item in ["Pork", "Chicken", "Beef", "Beer", "Turducken"]:
+                    heal_amount = {"Pork": 15, "Chicken": 10, "Beef":20 , "Beer": 20, "Turducken": 100}.get(item, 1)
+                    self.player.heal(heal_amount)
             else:
                 print("\nYou don't have enough gold for that item.")
         else:
@@ -33,7 +56,7 @@ class Shop:
     def open_shop(self):
         """Open the shop, allowing the user to interact with it."""
         while True:
-            self.show_balance()  # Show the player's balance
+            self.player.show_status()  # Show the player's balance and health
             self.show_items()    # Show available items
 
             print("\nEnter the name of the item you want to buy (or 'q' to quit):")
@@ -46,7 +69,7 @@ class Shop:
             else:
                 matched_item = None
                 for item in self.items:
-                    if choice == item.lower(): 
+                    if choice == item.lower():  # Match user input with lowercased item names
                         matched_item = item
                         break
 
@@ -56,8 +79,12 @@ class Shop:
                     print("\nInvalid choice. Please try again.")
 
 def main():
+    # Create the player instance
+    player_name = input("Enter your character's name: ")
+    player = Player(player_name)
+
     # Create the shop instance
-    shop = Shop()
+    shop = Shop(player)
 
     # Wait for the user to press '0' to open the shop
     print("Press '0' to open the shop.")
@@ -70,17 +97,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-
-
-# else:
-#                 # Normalize the choice input to match item names (case insensitive)
-#                 matched_item = None
-#                 for item in self.items:
-#                     if choice == item.lower():  # Match user input with lowercased item names
-#                         matched_item = item
-#                         break
-
-#                 if matched_item:
-#                     self.buy_item(matched_item)  # Call buy_item with the correctly cased item name
-#                 else:
-#                     print("\nInvalid choice. Please try again.")

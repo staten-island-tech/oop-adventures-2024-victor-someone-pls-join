@@ -14,7 +14,7 @@ class Character:
         for stat, value in self.stats.items():
             print(f"{stat.capitalize()}: {value}")
 
-# Warrior subclass
+# Warrior 
 class barbarian(Character):
     def __init__(self, name):
         super().__init__(name)
@@ -25,7 +25,7 @@ class barbarian(Character):
         character_types = {"Dmg": (15, 25), "agility": (5, 15), "intelligence": (3, 7), "health": (100, 150), "alcholism": (0, 15)}
         self.stats = {stat: random.randint(min_val, max_val) for stat, (min_val, max_val) in character_types.items()}
 
-# Mage subclass
+# Mage 
 class Mage(Character):
     def __init__(self, name):
         super().__init__(name)
@@ -36,7 +36,7 @@ class Mage(Character):
         character_types = {"Dmg": (5, 10), "agility": (9, 12), "intelligence": (15, 25), "health": (60, 80), "alcholism": (0,5)}
         self.stats = {stat: random.randint(min_val, max_val) for stat, (min_val, max_val) in character_types.items()}
 
-# Archer subclass
+# Archer 
 class Archer(Character):
     def __init__(self, name):
         super().__init__(name)
@@ -47,7 +47,7 @@ class Archer(Character):
         character_types = {"Dmg": (10, 15), "agility": (15, 25), "intelligence": (5, 12), "health": (70, 100), "alcholism": (0,10)}
         self.stats = {stat: random.randint(min_val, max_val) for stat, (min_val, max_val) in character_types.items()}
 
-# Thief subclass
+# Thief 
 class Thief(Character):
     def __init__(self, name):
         super().__init__(name)
@@ -55,7 +55,7 @@ class Thief(Character):
         self.generate_stats()
 
     def generate_stats(self):
-        character_types = {"Dmg": (5, 10), "agility": (13, 20), "intelligence": (8, 15), "health": (100, 100), "alcholism": (0,10)}
+        character_types = {"Dmg": (5, 10), "agility": (15, 25), "intelligence": (8, 15), "health": (100, 100), "alcholism": (0,10)}
         self.stats = {stat: random.randint(min_val, max_val) for stat, (min_val, max_val) in character_types.items()}
 
 def create_character():

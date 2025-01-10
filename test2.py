@@ -1,8 +1,8 @@
 class Player:
     def __init__(self, name):
         self.name = name
-        self.health = 100  # Starting health
-        self.gold = 50     # Starting gold
+        self.health = 0  # Starting health
+        self.gold = 1000     # Starting gold
 
     def heal(self, amount):
         """Heals the player by a certain amount."""
@@ -18,10 +18,11 @@ class Player:
 class Shop:
     def __init__(self, player):
         self.items = {
-            "Beer": 10,       # Beer costs 10 gold
+            "Beer": 5,       # Beer costs 10 gold
             "Pork": 20,       # Pork costs 20 gold
             "Chicken": 15,    # Chicken costs 15 gold
-            "Beef": 25        # Beef costs 25 gold
+            "Beef": 25,        # Beef costs 25 gold
+            "turducken": 100  # turducken costs 100 gold
         }
         self.player = player  # Reference to the player instance
 
@@ -44,8 +45,8 @@ class Shop:
                 print(f"\nYou bought {item} for {price} gold, you have {self.player.gold} gold left.")
 
                 # If the item is food, heal the player
-                if item in ["Pork", "Chicken", "Beef"]:
-                    heal_amount = {"Pork": 20, "Chicken": 15, "Beef": 25}.get(item, 0)
+                if item in ["Pork", "Chicken", "Beef", "Beer", "Turducken"]:
+                    heal_amount = {"Pork": 15, "Chicken": 10, "Beef":20 , "Beer": 20, "Turducken": 100}.get(item, 1)
                     self.player.heal(heal_amount)
             else:
                 print("\nYou don't have enough gold for that item.")
