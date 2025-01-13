@@ -1,7 +1,8 @@
+#test player ting intill i connect
 class Player:
     def __init__(self, name):
         self.name = name
-        self.health = 0  # Starting health
+        self.health = 100  # Starting health
         self.gold = 50     # Starting gold
 
     def heal(self, amount):
