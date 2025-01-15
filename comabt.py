@@ -1,5 +1,4 @@
-import character from character class
-
+from character class import character
  
 def take_damage(self, damage):
     """Reduces health by the damage taken."""
@@ -26,10 +25,10 @@ def battle(player, enemy):
         if action == "yes":
             player.attack(enemy)
         else:
-            print(f"{player.name} chooses not to attack.")
+            print(f"{player.name} does not attack.")
 
         if not enemy.is_alive():
-            print(f"{enemy.name} has been defeated!")
+            print(f"{enemy.name} has perished")
             break
 
         if enemy.is_alive():
@@ -37,7 +36,7 @@ def battle(player, enemy):
             enemy.attack(player)
 
         if not player.is_alive():
-            print(f"{player.name} has been defeated!")
+            print(f"{player.name} died")
             break
 
 player = Character(name="Hero", health=100, dmg=20)
