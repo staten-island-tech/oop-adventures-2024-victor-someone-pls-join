@@ -15,4 +15,4 @@ how to import apython file into another one
 explain
 how would i code a combat system that subtarcts a already established dasmge value from health
 explain
-why .lower
+why .lower neaded
